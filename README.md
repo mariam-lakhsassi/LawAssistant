@@ -31,7 +31,13 @@ we developed a streamlit based user interface that allows:
 **Install requirements**:
    ```bash
    pip install -r requirements.txt
+```
 Place your legal documents in the ./documents directory
 **Run the ingestion script to embed texts and create the vector database**:
-   ```python
+   ```bash
    python ingest.py
+```
+**Start the chatbot application**:
+   ```bash
+   streamlit run LLM.py
+```
