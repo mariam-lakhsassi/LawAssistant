@@ -28,6 +28,10 @@ we developed a streamlit based user interface that allows:
   Viewing responses directly in the browser.
 
 ## How to Use
-1. **Install dependencies**:
+**Install requirements**:
    ```bash
    pip install -r requirements.txt
+Place your legal documents in the ./documents directory
+**Run the ingestion script to embed texts and create the vector database**:
+   ```python
+   python ingest.py
