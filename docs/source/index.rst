@@ -27,7 +27,8 @@ Our law assistant can:
 The Pipeline of Our Project
 =================
 
-#Data Collection:
+#̅
+Data Collection:
 
 We used existing PDF files of Moroccan laws and court decisions from the following government resources:
 
