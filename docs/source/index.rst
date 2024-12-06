@@ -27,8 +27,6 @@ Our law assistant can:
 The Pipeline of Our Project
 =================
 
-#̅
-
 Data Collection:
 
 We used existing PDF files of Moroccan laws and court decisions from the following government resources:
@@ -37,7 +35,7 @@ We used existing PDF files of Moroccan laws and court decisions from the followi
 * uriscassation.cspj.ma
 * juricaf.org
 * cg.gov.ma
-
+------------------
 #Data Preprocessing
 
 We used pdfplumber to extract text from PDFs and langchain.text_splitter to split large legal documents into smaller, manageable chunks.
