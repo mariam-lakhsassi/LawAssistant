@@ -11,7 +11,7 @@ LawAssistant documentation
 **Realised by:** Lakhsassi Mariam and Jhabli Hassna
 
 
-the link to our github repositry: `https://github.com/mariam-lakhsassi/LawAssistant.git`_.
+the link to our github repositry: `<https://github.com/mariam-lakhsassi/LawAssistant.git>`_.
 
 
 
