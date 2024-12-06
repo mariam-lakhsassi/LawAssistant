@@ -19,7 +19,9 @@ Our law assistant can:
 * Assist in preparing simple legal documents
 * Help users understand their rights and obligations under Moroccan law
 
-##The Pipeline of Our Project
+=================
+The Pipeline of Our Project
+=================
 
 ###Data Collection:
 
