@@ -19,9 +19,9 @@ Our law assistant can:
 * Assist in preparing simple legal documents
 * Help users understand their rights and obligations under Moroccan law
 
-## The Pipeline of Our Project
+##The Pipeline of Our Project
 
-### Data Collection:
+###Data Collection:
 
 We used existing PDF files of Moroccan laws and court decisions from the following government resources:
 
@@ -30,7 +30,7 @@ We used existing PDF files of Moroccan laws and court decisions from the followi
 * juricaf.org
 * cg.gov.ma
 
-### Data Preprocessing
+###Data Preprocessing
 
 We used pdfplumber to extract text from PDFs and langchain.text_splitter to split large legal documents into smaller, manageable chunks.
 
