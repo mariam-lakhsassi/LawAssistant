@@ -13,6 +13,12 @@ LawAssistant documentation
 
 the link to our github repositry: `<https://github.com/mariam-lakhsassi/LawAssistant.git>`_.
 
+Our law assistant can:
+
+* Provide accurate answers to common legal questions
+* Assist in preparing simple legal documents
+* Help users understand their rights and obligations under Moroccan law
+
 
 
 .. toctree::
