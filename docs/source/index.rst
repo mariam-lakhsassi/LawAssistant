@@ -7,6 +7,7 @@ LawAssistant documentation
 ==========================
 
 **supervised by:** M.MASROUR
+==========================
 **Realised by:** Lakhsassi Mariam and Jhabli Hassna
 
 
