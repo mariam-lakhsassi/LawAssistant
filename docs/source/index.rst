@@ -10,6 +10,8 @@ LawAssistant documentation
 
 **Realised by:** Lakhsassi Mariam and Jhabli Hassna
 
+the link to our github repositry :
+
 
 
 
