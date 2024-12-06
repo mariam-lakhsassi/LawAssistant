@@ -11,7 +11,6 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain.text_splitter import CharacterTextSplitter
 from langchain_community.chat_models import ChatOllama
 from langchain_community.embeddings.ollama import OllamaEmbeddings
-
 from langchain.schema import Document
 from ingest import initialize_vector_store
 import chainlit as cl
@@ -27,9 +26,8 @@ def read_pdf(file):
 
 
 def retrieve_from_db(question):
-    # get the model
+   
     model = ChatOllama(model="llama3.2:3b")
-    # initialize the vector store
     db = initialize_vector_store()
 
     retriever = db.similarity_search(question, k=2)
@@ -83,39 +81,51 @@ def retriever(doc, question):
 
 
 
-# Chainlit integration
-@cl.on_chat_start
-async def chat_start():
-    await cl.Message(content="Welcome! Please upload a PDF file to start or directly ask a question.").send()
 
-""" @cl.file_upload(name="Upload a PDF", accept=["application/pdf"])
-async def on_file_upload(file: cl.File):
-    # Save the file content to the session
-    file_path = f"./uploaded_files/{file.name}"
-    with open(file_path, "wb") as f:
-        f.write(await file.read())
+st.set_page_config(page_title="Your Law Assistant", layout="wide")
 
-    # Read and process the file
-    doc_text = read_pdf(file_path)
-    cl.user_session.set("doc", doc_text)
 
-    await cl.Message(content=f"File '{file.name}' uploaded successfully! You can now ask questions based on this document.").send() """
+st.title("📜 Your Law Assistant")
+st.write("💼 Drop your question about financial, commercial, or work law.")
 
-@cl.on_message
-async def on_message(message: cl.Message):
-    question = message.content
+st.sidebar.title("⚙️ Settings")
+st.sidebar.write("Customize your experience.")
+theme = st.sidebar.radio("Select Theme:", ["Light", "Dark"])
 
-    try:
-        answer = retrieve_from_db(question)
-        logging.debug(f"Answer generated: {answer}") 
-    except Exception as e:
-        print(f"Error during retrieval: {e}")
+st.header("📂 Upload Your Document")
+file = st.file_uploader("Upload a PDF file", type=["pdf"], help="Upload a PDF document to assist with your question.")
 
-    # Send the answer back to the user
-    await cl.Message(content=answer).send()
-"""     doc = cl.user_session.get("doc")
+st.header("💬 Ask Your Question")
+question = st.text_input("Type your question here:", placeholder="e.g., What are the labor laws in XYZ country?")
 
-    # Decide whether to retrieve from the uploaded document or the database
-    if doc:
-        answer = retriever(doc, question)
-        else """
+if file:
+    st.success("✅ File uploaded successfully!")
+    doc = read_pdf(file)  
+    if st.button("Ask"):
+        with st.spinner("Retrieving the answer..."):
+            answer = retriever(doc, question)  
+        st.subheader("📖 Answer")
+        st.write(answer)
+else:
+    st.info("📂 No file uploaded. You can still ask general questions.")
+    if st.button("Ask"):
+        with st.spinner("Retrieving the answer..."):
+            answer = retrieve_from_db(question)  
+        st.subheader("📖 Answer")
+        st.write(answer)
+
+st.markdown("""
+<style>
+    .reportview-container {
+        background-color: #f7f7f7;
+        color: #000;
+    }
+    h1 {
+        color: #4CAF50;
+    }
+    .stButton button {
+        background-color: #4CAF50;
+        color: white;
+    }
+</style>
+""", unsafe_allow_html=True)

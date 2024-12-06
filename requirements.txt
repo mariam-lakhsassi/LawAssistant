@@ -8,3 +8,5 @@ langchain-openai
 chromadb
 ollama-python
 tiktoken
+sphinx
+sphinx_rtd_theme

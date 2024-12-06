@@ -6,6 +6,7 @@ from langchain.schema import Document
 from langchain_community.embeddings.ollama import OllamaEmbeddings
 
 pdf_file = "./documents"
+batch_size = 25
 
 def read_pdf(file_path):
     """Extract text from a PDF file."""
@@ -26,21 +27,13 @@ def load_all_documents():
     pdf_documents = load_documents_from_directory(pdf_file)
     return pdf_documents
 
-# Use this function to process all documents
-all_documents = load_all_documents()
-texts = [doc.page_content for doc in all_documents]
-
-def ingest_into_vector_store(combined_texts):
+def ingest_into_vector_store(documents, db):
     """Ingest processed text into the Chroma vector store."""
-    # Process combined documents
     text_splitter = CharacterTextSplitter.from_tiktoken_encoder(chunk_size=5000, chunk_overlap=500, separator=".")
-    doc_splits = text_splitter.split_documents([Document(page_content=text) for text in combined_texts])
+    doc_splits = text_splitter.split_documents(documents)
     
-    # Initialize the Chroma vector store with a specific collection name
-    db = Chroma(persist_directory="./TP_db", embedding_function=OllamaEmbeddings(model="mxbai-embed-large:latest"), collection_name="rag-chroma")
-
     # Add documents to Chroma and persist the data
-    db.add_documents(doc_splits)  # Ensure documents is a list of dicts with 'page_content'
+    db.add_documents(doc_splits)
 
     db.persist()
 
@@ -48,15 +41,20 @@ def ingest_into_vector_store(combined_texts):
 
 def initialize_vector_store():
     """Initialize the Chroma vector store for retrieval."""
-
-    db = Chroma(persist_directory="./TP_db", embedding_function=OllamaEmbeddings(model="mxbai-embed-large:latest"), collection_name="rag-chroma")
+    db = Chroma(
+        persist_directory="./TP_db",
+        embedding_function=OllamaEmbeddings(model="mxbai-embed-large:latest"),
+        collection_name="rag-chroma"
+    )
     return db
 
-def main(): 
+def main():
     all_documents = load_all_documents()
     if all_documents:
-        combined_texts = [doc.page_content for doc in all_documents]
-        ingest_into_vector_store(combined_texts)
+        db = initialize_vector_store()
+        for i in range(0, len(all_documents), batch_size):
+            batch = all_documents[i:i+batch_size]
+            ingest_into_vector_store(batch, db)
     else:
         print("No data to process.")
 
