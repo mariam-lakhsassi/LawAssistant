@@ -6,9 +6,9 @@
 LawAssistant documentation
 ==========================
 
-***supervised by:** M.MASROUR
+**supervised by:** M.MASROUR
 
-***Realised by:** Lakhsassi Mariam and Jhabli Hassna
+**Realised by:** Lakhsassi Mariam and Jhabli Hassna
 
 
 .. toctree::
