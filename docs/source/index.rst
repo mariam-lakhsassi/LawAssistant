@@ -36,11 +36,11 @@ We used existing PDF files of Moroccan laws and court decisions from the followi
 * juricaf.org
 * cg.gov.ma
 
-*Data Preprocessing: *
+*Data Preprocessing:*
 
 We used pdfplumber to extract text from PDFs and langchain.text_splitter to split large legal documents into smaller, manageable chunks.
 
-*Embedding Creation: *
+*Embedding Creation:*
 
 Each chunk was embedded to create vector representations using the embedding model: mxbai-embed-large:latest.
 
