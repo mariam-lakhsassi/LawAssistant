@@ -35,7 +35,6 @@ Introduction
 
 .. image:: images/logo.png
    :alt: Logo de LawAssistant
-   :class: center
    :width: 300px
    :align: center
 
