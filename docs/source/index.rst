@@ -16,9 +16,6 @@ the link to our github repositry: `<https://github.com/mariam-lakhsassi/LawAssis
 Contents
 --------
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Table of Contents
 
    Introduction
    The Pipeline of Our Project
@@ -120,6 +117,11 @@ To set up the chatbot application, follow these steps:
    .. code-block:: bash
 
       streamlit run LLM.py
+
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Table of Contents
 
 
 
