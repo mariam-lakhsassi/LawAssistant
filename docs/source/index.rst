@@ -14,29 +14,20 @@ LawAssistant documentation
 the link to our github repositry: `<https://github.com/mariam-lakhsassi/LawAssistant.git>`_.
 
 Table of Contents
---------
+-----------------
 
-
-   Introduction
-
-   The Pipeline of Our Project
-
-      Data Collection
-
-      Data Preprocessing
-
-      Embedding Creation
-
-      Vector Database Creation
-
-      Retrieval and Answer Generation
-
-      Streamlit Interface
-
-   Installation
+- `Introduction <introduction_>`_
+- `The Pipeline of Our Project <pipeline_>`_
+    - `Data Collection <pipeline_>`_
+    - `Data Preprocessing <pipeline_>`_
+    - `Embedding Creation <pipeline_>`_
+    - `Vector Database Creation <pipeline_>`_
+    - `Retrieval and Answer Generation <pipeline_>`_
+    - `Streamlit Interface <pipeline_>`_
+- `Usage <usage_>`_
    
    
-
+.. _introduction:
 
 =================
 Introduction
@@ -47,6 +38,8 @@ Our law assistant can:
 * Provide accurate answers to common legal questions about 
 * Assist in preparing simple legal documents
 * Help users understand their rights and obligations under Moroccan law
+
+.. _pipeline:
 
 =================
 The Pipeline of Our Project
@@ -91,11 +84,12 @@ We developed a Streamlit-based user interface that allows:
 
 The model we used (llama2:7b) generates answers in English by default . To make the responses more user-friendly for Moroccan users, we used  deep-translator as a transation model .
 Users can select their preferred language—Arabic or French—through the settings. Based on their choice, the model will automatically translate the response into the desired language.
-.. Installation Guide
-.. ==================
 
-Installation
-============
+.. _usage:
+
+==========
+Usage
+==========
 
 To set up the chatbot application, follow these steps:
 

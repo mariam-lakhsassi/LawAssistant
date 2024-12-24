@@ -27,7 +27,7 @@ we developed a streamlit based user interface that allows:
   Typing general legal questions.
   Viewing responses directly in the browser.
 
-## How to Use
+## Usage
 **Install requirements**:
    ```bash
    pip install -r requirements.txt
