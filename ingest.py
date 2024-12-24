@@ -29,7 +29,7 @@ def load_all_documents():
 
 def ingest_into_vector_store(documents, db):
     """Ingest processed text into the Chroma vector store."""
-    text_splitter = CharacterTextSplitter.from_tiktoken_encoder(chunk_size=5000, chunk_overlap=500, separator=".")
+    text_splitter = CharacterTextSplitter.from_tiktoken_encoder(chunk_size=10000, chunk_overlap=1000, separator=".")
     doc_splits = text_splitter.split_documents(documents)
     
     # Add documents to Chroma and persist the data
@@ -37,7 +37,7 @@ def ingest_into_vector_store(documents, db):
 
     db.persist()
 
-    print("Data has been ingested into vector database.")
+    
 
 def initialize_vector_store():
     """Initialize the Chroma vector store for retrieval."""
@@ -55,7 +55,8 @@ def main():
         for i in range(0, len(all_documents), batch_size):
             batch = all_documents[i:i+batch_size]
             ingest_into_vector_store(batch, db)
+        print("Data has been ingested into vector database.")
     else:
         print("No data to process.")
 
-main()
+# main()

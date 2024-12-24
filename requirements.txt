@@ -10,3 +10,4 @@ ollama-python
 tiktoken
 sphinx
 sphinx_rtd_theme
+deep-translator

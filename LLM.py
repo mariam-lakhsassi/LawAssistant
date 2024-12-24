@@ -2,7 +2,7 @@ import logging
 import streamlit as st
 import os 
 import PyPDF2
-
+from deep_translator import GoogleTranslator
 
 from langchain_community.vectorstores import Chroma
 from langchain_core.runnables import RunnablePassthrough
@@ -13,7 +13,7 @@ from langchain_community.chat_models import ChatOllama
 from langchain_community.embeddings.ollama import OllamaEmbeddings
 from langchain.schema import Document
 from ingest import initialize_vector_store
-import chainlit as cl
+
 
 
 # function to read the pdf file
@@ -27,7 +27,7 @@ def read_pdf(file):
 
 def retrieve_from_db(question):
    
-    model = ChatOllama(model="llama3.2:3b")
+    model = ChatOllama(model="llama2:7b")
     db = initialize_vector_store()
 
     retriever = db.similarity_search(question, k=2)
@@ -50,7 +50,7 @@ def retrieve_from_db(question):
 
 
 def retriever(doc, question):
-    model_local = ChatOllama(model="llama3.2:3b")
+    model_local = ChatOllama(model="llama2:7b")
     doc = Document(page_content=doc)
     doc = [doc]
     text_splitter = CharacterTextSplitter.from_tiktoken_encoder(chunk_size=800, chunk_overlap=0)
@@ -89,14 +89,17 @@ st.title("📜 Your Law Assistant")
 st.write("💼 Drop your question about financial, commercial, or work law.")
 
 st.sidebar.title("⚙️ Settings")
-st.sidebar.write("Customize your experience.")
-theme = st.sidebar.radio("Select Theme:", ["Light", "Dark"])
+theme = st.sidebar.radio("Select language:", ["العربية", "français"])
+language_map = {
+    "العربية": "ar",  
+    "français": "fr"  
+}
 
 st.header("📂 Upload Your Document")
-file = st.file_uploader("Upload a PDF file", type=["pdf"], help="Upload a PDF document to assist with your question.")
+file = st.file_uploader("Upload a PDF file", type=["pdf"])
 
 st.header("💬 Ask Your Question")
-question = st.text_input("Type your question here:", placeholder="e.g., What are the labor laws in XYZ country?")
+question = st.text_input( label="ask",placeholder="e.g., What are the labor laws in XYZ country?")
 
 if file:
     st.success("✅ File uploaded successfully!")
@@ -105,14 +108,15 @@ if file:
         with st.spinner("Retrieving the answer..."):
             answer = retriever(doc, question)  
         st.subheader("📖 Answer")
-        st.write(answer)
+        translated = GoogleTranslator(source='en', target=language_map[theme]).translate(answer)  
+        st.write(translated)
 else:
-    st.info("📂 No file uploaded. You can still ask general questions.")
     if st.button("Ask"):
         with st.spinner("Retrieving the answer..."):
             answer = retrieve_from_db(question)  
         st.subheader("📖 Answer")
-        st.write(answer)
+        translated = GoogleTranslator(source='en', target=language_map[theme]).translate(answer)  
+        st.write(translated)
 
 st.markdown("""
 <style>
