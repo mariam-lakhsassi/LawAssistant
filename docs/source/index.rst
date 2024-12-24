@@ -13,10 +13,12 @@ LawAssistant documentation
 
 the link to our github repositry: `<https://github.com/mariam-lakhsassi/LawAssistant.git>`_.
 
-Contents
+Table of Contents
 --------
 
-
+.. toctree::
+   :maxdepth: 2
+   :caption: Table of Contents
    Introduction
    The Pipeline of Our Project
       Data Collection
@@ -119,9 +121,7 @@ To set up the chatbot application, follow these steps:
       streamlit run LLM.py
 
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Table of Contents
+
 
 
 
