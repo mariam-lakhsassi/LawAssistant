@@ -33,6 +33,11 @@ Table of Contents
 Introduction
 =================
 
+.. image:: images/logo.png
+   :alt: Logo de LawAssistant
+   :class: center
+   :width: 300px
+
 Our law assistant can:
 
 * Provide accurate answers to common legal questions about 
