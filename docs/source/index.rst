@@ -37,6 +37,7 @@ Introduction
    :alt: Logo de LawAssistant
    :class: center
    :width: 300px
+   :align: center
 
 Our law assistant can:
 
