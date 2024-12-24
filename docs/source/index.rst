@@ -16,18 +16,25 @@ the link to our github repositry: `<https://github.com/mariam-lakhsassi/LawAssis
 Table of Contents
 --------
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Table of Contents
+
    Introduction
+
    The Pipeline of Our Project
+
       Data Collection
+
       Data Preprocessing
+
       Embedding Creation
+
       Vector Database Creation
+
       Retrieval and Answer Generation
+
       Streamlit Interface
+
    Installation
+   
    
 
 
@@ -121,7 +128,9 @@ To set up the chatbot application, follow these steps:
       streamlit run LLM.py
 
 
-
+.. toctree::
+   :maxdepth: 2
+   :caption: Table of Contents
 
 
 
