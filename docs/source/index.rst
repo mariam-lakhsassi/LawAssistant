@@ -39,6 +39,7 @@ Introduction
    :align: center
 
 
+
 Our law assistant can:
 
 * Provide accurate answers to common legal questions about 
