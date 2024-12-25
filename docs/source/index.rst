@@ -42,7 +42,7 @@ Introduction
 
 Our law assistant can:
 
-* Provide accurate answers to common legal questions about 
+* Provide accurate answers to common legal questions about financial, commercial and labor law
 * Assist in preparing simple legal documents
 * Help users understand their rights and obligations under Moroccan law
 
