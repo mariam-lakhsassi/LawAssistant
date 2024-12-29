@@ -85,12 +85,13 @@ We developed a Streamlit-based user interface that allows:
 
 * Uploading PDF files.
 * Typing general legal questions.
+* selecting the preferred language for chatbot responses.
 * Viewing responses directly in the browser.
 
 *Translator integration:*
 
-The model we used (llama2:7b) generates answers in English by default . To make the responses more user-friendly for Moroccan users, we used  deep-translator as a transation model .
-Users can select their preferred language—Arabic or French—through the settings. Based on their choice, the model will automatically translate the response into the desired language.
+The model we used (llama2:7b) generates answers in English by default . To make the responses more user-friendly for Moroccan users, we used  deep-translator as a translation model .
+Users can select their preferred language Arabic or French through the settings. Based on their choice, the model will automatically translate the response into the desired language.
 
 .. _usage:
 
