@@ -27,7 +27,7 @@ def read_pdf(file):
 
 def retrieve_from_db(question):
    
-    model = ChatOllama(model="llama3.1:8b")
+    model = ChatOllama(model="llama2:7b")
     db = initialize_vector_store()
 
     retriever = db.similarity_search(question, k=2)
@@ -50,7 +50,7 @@ def retrieve_from_db(question):
 
 
 def retriever(doc, question):
-    model_local = ChatOllama(model="llama3.1:8b")
+    model_local = ChatOllama(model="llama2:7b")
     doc = Document(page_content=doc)
     doc = [doc]
     text_splitter = CharacterTextSplitter.from_tiktoken_encoder(chunk_size=800, chunk_overlap=0)
